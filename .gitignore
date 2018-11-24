@@ -1,0 +1,6 @@
+_site/
+_sass-cache
+
+# Emacs
+~*
+#*

@@ -1,0 +1,116 @@
+---
+---
+body,html
+  min-height: 100%
+
+body
+  background: #47017F
+  color: #fff
+  font-family: 'Roboto', sans-serif
+  position: relative
+  &::after
+    content: ''
+    display: block
+    height: 50px
+
+h1,h2,h3,h4,h5,h6
+  text-align: center
+
+.header
+  text-align: center
+  box-sizing: border-box
+  padding: 25px 15px
+  background: linear-gradient(#930BFF, #400074)
+  color: white
+  font-size: 1.4em
+  h1
+    font-family: 'Oleo Script', cursive
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+  h2
+    font-size: 1.2em
+
+
+.page
+  padding: 10px 15px
+  padding-bottom: 0
+  max-width: 750px
+  margin: 0 auto
+
+  h3
+    font-weight: 900
+    font-size: 1.5em
+    margin-top: 45px
+    margin-bottom: 25px
+    font-weight: 300
+
+  p
+    text-align: center
+    line-height: 1.4
+
+  pre
+    font-family: 'Roboto Mono', monospace
+    overflow-x: auto
+    padding: 15px
+    border-radius: 5px
+    line-height: 1.6
+    a
+      color: inherit
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+    &.terminal
+      color: #F2F2F2
+      text-align: center
+      background: #3f1065
+      border: 15px solid #56159c
+      font-size: .9em
+      padding: 40px 10px
+      code::before
+        content: "$ "
+        color: #be29ec
+
+.code-header
+  font-size: 1em
+  padding: 15px
+  padding-bottom: 0
+  h1,h2
+    text-align: left
+    margin: 0
+  a
+    color: #be29ec
+
+.code-viewer
+  box-sizing: border-box
+  .highlight
+    padding: 15px
+  .highlight, pre
+    margin: 0
+
+a.view-sanemacs-link
+  color: #ba65ff
+  text-align: center
+  width: 100%
+  display: block
+  text-decoration: none
+  &:hover
+    color: #cf94ff
+    text-decoration: underline
+
+footer
+  font-size: .8em
+  font-family: 'Roboto Mono', monospace
+  position: absolute
+  right: 15px
+  bottom: 15px
+  @media screen and (max-width: 850px)
+    left: 0
+    width: 100%
+    text-align: center
+    bottom: 30px
+  a
+    color: white

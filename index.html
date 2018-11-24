@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<div class="header">
+	<h1>{{site.title}}</h1>
+	<h2>{{site.subtitle}}</h2>
+</div>
+
+<div class="page">
+
+	<h3>Installation</h3>
+	<pre id="maclinux" class="terminal"><code>mkdir -p ~/.emacs; curl <a target="_blank" href="/sanemacs.el">https://sanemacs.com/sanemacs.el</a> > ~/.emacs.d/</code></pre>
+
+	<h3>Creating your <code>~/.emacs.d/init.el</code></h3>
+	<p>After you have downloaded sanemacs.el, all that's left to do is load it up.</p>
+	<p>Every package you include in <code>package-list</code> will be installed automatically if not already installed.</p>
+	<pre class="paper">{% highlight elisp %}{% include example-config.el %}{% endhighlight %}</pre>
+
+	<a class="view-sanemacs-link" href="/sanemacs">View sanemacs.el in browser (With code highlighting!)</a>
+</div>
