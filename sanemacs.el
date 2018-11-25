@@ -6,7 +6,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 ;;; Call package-initialize if needed
-(when (version< emacs-version "27.0") (package-initialize))
+(unless package--initialized (package-initialize))
 
 ;;; Fetch the list of packages available
 (unless package-archive-contents
