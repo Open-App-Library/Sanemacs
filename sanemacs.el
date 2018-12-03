@@ -1,21 +1,23 @@
-;;; Hide menu bar, tool bar, and scroll bar
+;;; Disable menu-bar, tool-bar, and scroll-bar
 (menu-bar-mode -1) (tool-bar-mode -1) (scroll-bar-mode -1)
 
-;;; Require 'package and add melpa repository
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 ;;; Call package-initialize if needed
 (unless package--initialized (package-initialize))
 
-;;; Fetch the list of packages available
+;;; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
 ;;; Install packages from list if not installed
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+(let ((installedFirstPackage nil))
+  (dolist (package package-list)
+    (unless (package-installed-p package)
+      (unless installedFirstPackage (package-refresh-contents))
+      (setq installedFirstPackage t)
+      (package-install package))))
 
 ;;; Useful Defaults
 (setq inhibit-startup-screen t)
@@ -47,9 +49,7 @@
     (when (member pkg-to-check (sanemacs--package-get-dependencies pkg-s)) (setq shouldreturntrue t))))
   shouldreturntrue)
 
-;;; Useful function to remove packages that are not defined in 'package-list'.
-;;; It will not uninstall packages that are dependencies of packages on 'package-list'.
-(defun package-autoremove ()
+(defun sanemacs--package-autoremove ()
   (interactive)
   (setq delete-list-human '()) ;; Human readable
   (setq delete-list-emacs '()) ;; For emacs
@@ -61,6 +61,6 @@
         (push pkg-s delete-list-human)
         (push pkg-object delete-list-emacs))))
   (if (not (eq delete-list-human nil))
-    (when (y-or-n-p (format "%s\nDelete these plugins? [y/n]" delete-list-human))
+    (when (y-or-n-p (format "%s\nRemove these packages? [y/n]" delete-list-human))
       (dolist (pkg-to-del delete-list-emacs) (package-delete pkg-to-del)))
     (print "Nothing to clean.")))
