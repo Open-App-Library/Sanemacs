@@ -15,7 +15,23 @@ layout: default
 	<h3>Creating your <code>~/.emacs.d/init.el</code></h3>
 	<p>After you have downloaded sanemacs.el, all that's left to do is load it up.</p>
 	<p>Every package you include in <code>package-list</code> will be installed automatically if not already installed.</p>
-	<pre class="paper">{% highlight elisp %}{% include example-config.el %}{% endhighlight %}</pre>
+
+	<div class="example-usage">
+		<pre class="paper">{% highlight elisp %}{% include example-config.el %}{% endhighlight %}</pre>
+		<p><a href="https://gitlab.com/dougbeney/emacs-config/tree/master">View an example Emacs configuration using sanemacs.el</a></p>
+	</div>
+
+	<div class="bonus-tip">
+		<h2>BONUS TIP</h2>
+		<p>Use the command <code>sanemacs--package-autoremove</code> to automatically remove packages that are not specified in <code>package-list</code>.</p>
+	</div>
+
+	<div class="bonus-tip">
+		<h2>"Layers?"</h2>
+		<p>If this package gets traction, a project I would like to create is <code>sanemacs-layers</code>. It would be similar how Spacemacs' layers concept but will have different goals.</p>
+		<p>First, <code>sanemacs-layers</code> would work on any Emacs configuration, sanemacs or not.</p>
+		<p>Next, it would have a focus on sane configurations that just work, but are flexible. This would entail automatic detection settings to work for your system - configuring your PythonPath automatically as an example.</p>
+	</div>
 
 	<a class="view-sanemacs-link" href="/sanemacs">View sanemacs.el in browser (With code highlighting!)</a>
 </div>
