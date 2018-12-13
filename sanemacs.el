@@ -1,6 +1,7 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.1.0 ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Sanemacs version 0.1.0 ;;;
+;;; https://sanemacs.com   ;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Disable menu-bar, tool-bar, and scroll-bar.
 (menu-bar-mode -1) (tool-bar-mode -1) (scroll-bar-mode -1)
