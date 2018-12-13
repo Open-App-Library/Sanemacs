@@ -1,37 +1,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.0.6 ;;
+;;; Sanemacs version 0.1.0 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Disable menu-bar, tool-bar, and scroll-bar
+;;; Disable menu-bar, tool-bar, and scroll-bar.
 (menu-bar-mode -1) (tool-bar-mode -1) (scroll-bar-mode -1)
 
+;;; Setup package.el
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-;;; Call package-initialize if needed
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (unless package--initialized (package-initialize))
 
-;;; fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-
-;;; Install packages from list if not installed
-(let ((installedFirstPackage nil))
-  (dolist (package package-list)
-    (unless (package-installed-p package)
-      (unless installedFirstPackage (package-refresh-contents))
-      (setq installedFirstPackage t)
-      (package-install package))))
+;;; Setup use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(setq use-package-always-ensure t)
 
 ;;; Useful Defaults
-(setq inhibit-startup-screen t)
-(setq initial-scratch-message "")
-(setq-default frame-title-format '("%b"))
-(setq ring-bell-function 'ignore)
-(fset 'yes-or-no-p 'y-or-n-p)
-(show-paren-mode 1)
+(setq inhibit-startup-screen t)           ; Disable startup screen
+(setq initial-scratch-message "")         ; Make *scratch* buffer blank
+(setq-default frame-title-format '("%b")) ; Make window title the buffer name
+(setq ring-bell-function 'ignore)         ; Disable bell sound
+(fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
+(show-paren-mode 1)                       ; Show closing parens by default
+(setq linum-format "%4d \u2502")          ; Prettify line number format
+(add-hook 'prog-mode-hook #'linum-mode)   ; Show line numbers in programming modes
 
 ;;; Offload the custom-set-variables to a separate file
+;;; This keeps your init.el neater and you have the option
+;;; to gitignore your custom.el
 (setq custom-file "~/.emacs.d/custom.el")
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
@@ -47,34 +47,5 @@
    kept-old-versions 2
    version-control t)       ; use versioned backups
 
-;;; Utility functions
-(defun sanemacs--package-get-dependencies (pkg-to-check)
-  (setq listofdepends nil)
-  (dolist (pkg package-alist)
-    (let ((desc (assoc pkg-to-check package-archive-contents)))
-      (if desc
-          (setq listofdepends (mapcar (lambda (elm) (car elm)) (aref (cadr desc) 4))))))
-  listofdepends)
-
-(defun sanemacs--package-is-a-dependency (pkg-to-check)
-  (setq shouldreturntrue nil)
-  (dolist (pkg package-alist)
-    (let ((pkg-s (car pkg)))
-    (when (member pkg-to-check (sanemacs--package-get-dependencies pkg-s)) (setq shouldreturntrue t))))
-  shouldreturntrue)
-
-(defun sanemacs--package-autoremove ()
-  (interactive)
-  (setq delete-list-human '()) ;; Human readable
-  (setq delete-list-emacs '()) ;; For emacs
-  (dolist (pkg package-alist) ;; Loop through all installed packages
-    (setq pkg-s (car pkg))
-    (setq pkg-object (car (cdr pkg)))
-    (when (not (member pkg-s package-list)) ;; If not package is on user package list
-      (when (not (sanemacs--package-is-a-dependency pkg-s))
-        (push pkg-s delete-list-human)
-        (push pkg-object delete-list-emacs))))
-  (if (not (eq delete-list-human nil))
-    (when (y-or-n-p (format "%s\nRemove these packages? [y/n]" delete-list-human))
-      (dolist (pkg-to-del delete-list-emacs) (package-delete pkg-to-del)))
-    (print "Nothing to clean.")))
+;;; Lockfiles unfortunately cause more pain than benefit
+(setq create-lockfiles nil)
