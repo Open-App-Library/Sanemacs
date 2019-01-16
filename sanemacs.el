@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.1.1 ;;;
+;;; Sanemacs version 0.1.2 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -30,7 +30,7 @@
 (setq ring-bell-function 'ignore)         ; Disable bell sound
 (fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
 (show-paren-mode 1)                       ; Show closing parens by default
-(setq linum-format "%4d \u2502")          ; Prettify line number format
+(setq linum-format "%4d ")          ; Prettify line number format
 (add-hook 'prog-mode-hook #'linum-mode)   ; Show line numbers in programming modes
 
 ;;; Offload the custom-set-variables to a separate file
