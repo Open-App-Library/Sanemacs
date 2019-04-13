@@ -6,5 +6,11 @@
 mkdir -p ~/.emacs.d
 curl https://sanemacs.com/sanemacs.el > ~/.emacs.d/sanemacs.el
 
-[ -f ~/.emacs.d/init.el ] cp ~/.emacs.d/init.el ~/.emacs.d/init.el.backup
+if [ -f ~/.emacs.d/init.el ]; then
+    cp ~/.emacs.d/init.el ~/.emacs.d/init.el.backup
+fi
 echo "(load \"~/.emacs.d/sanemacs.el\")" > ~/.emacs.d/init.el
+
+echo "Success! Starting Emacs..."
+emacs
+
