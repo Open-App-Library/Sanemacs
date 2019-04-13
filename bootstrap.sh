@@ -11,6 +11,5 @@ if [ -f ~/.emacs.d/init.el ]; then
 fi
 echo "(load \"~/.emacs.d/sanemacs.el\")" > ~/.emacs.d/init.el
 
-echo "Success! Starting Emacs..."
-emacs
+echo "Done!"
 
