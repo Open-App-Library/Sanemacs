@@ -9,19 +9,46 @@ layout: default
 
 <div class="page">
   <h3>Installation</h3>
+  <h4>Step #1: Download sanemacs.el</h4>
   <pre id="maclinux" class="terminal"><code>mkdir -p ~/.emacs.d; curl <a target="_blank" href="/sanemacs.el">https://sanemacs.com/sanemacs.el</a> > ~/.emacs.d/sanemacs.el</code></pre>
-
-  <h3>Creating your <code>~/.emacs.d/init.el</code></h3>
-  <p>After you have downloaded sanemacs.el, all that's left to do is load it up.</p>
-  <p>Every package you include in <code>package-list</code> will be installed automatically if not already installed.</p>
+  <h4>Step #2: Create or modify <code class="yellow">~/.emacs.d/init.el</code></h4>
+  <p>After you have downloaded sanemacs.el, all that's left to do is load it up!</p>
 
   <div class="example-usage">
     <pre class="paper">{% highlight elisp %}{% include example-config.el %}{% endhighlight %}</pre>
     <p><a target="_blank" href="https://gitlab.com/dougbeney/emacs-config/tree/master">View an example Emacs configuration using sanemacs.el</a></p>
   </div>
 
+  <hr>
+
+  <div class="keybindings">
+    <h2>Keybindings</h2>
+    <p>The general rule of keybindings added by Sanemacs is that they may not override default Emacs keybindings. There are four keybindings you should be aware of. Two of which are created by Sanemacs, the other two are from undo-tree. While undo-tree did "override" a default binding, it is appropriate since it is a drop-in replacement that really makes a big difference in the usability of Emacs.</p>
+    <table>
+      <tr>
+	<th>Keybinding</th> <th>Description</th> <th>Emacs command run</th>
+      </tr>
+      <tr>
+	<td>Control + ></td> <td>Indents a selection by one tab length</td> <td><code>indent-rigidly-right-to-tab-stop</code></td>
+      </tr>
+      <tr>
+	<td>Control + <</td> <td>De-indents a selection by one tab length</td> <td><code>indent-rigidly-left-to-tab-stop</code></td>
+      </tr>
+      <tr>
+	<td>Control + /</td> <td>Undo</td> <td><code>undo-tree-undo</code></td>
+      </tr>
+      <tr>
+	<td>Control + ?</td> <td>Redo</td> <td><code>undo-tree-redo</code></td>
+      </tr>
+      <tr>
+      </tr>
+    </table>
+  </div>
+
+  <hr>
+
   <div class="bonus-tip">
-    <h2>"Layers?"</h2>
+    <h2>"Layers?" (Sane, minimal layers)</h2>
     <p>If this package gets traction, a project I would like to create is <code>sanemacs-layers</code>. It would be similar how Spacemacs' layers concept but will have different goals.</p>
     <p>First, <code>sanemacs-layers</code> would work on any Emacs configuration, sanemacs or not.</p>
     <p>Next, it would have a focus on sane configurations that just work, but are flexible. This would entail automatic detection settings to work for your system - configuring your PythonPath automatically as an example.</p>

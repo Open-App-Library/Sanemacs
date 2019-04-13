@@ -46,12 +46,15 @@ h1,h2,h3,h4,h5,h6
     font-size: 1.5em
     margin-top: 45px
     margin-bottom: 25px
-    font-weight: 300
+    font-weight: 600
+  h4
+    font-weight: 500
 
   p
     text-align: center
     line-height: 1.4
-
+  code.yellow
+    color: #ffe942
   pre
     font-family: 'Roboto Mono', monospace
     overflow-x: auto
@@ -127,3 +130,27 @@ footer
     bottom: 30px
   a
     color: white
+
+hr
+  margin: 15px 0
+  color: #6a14b0
+
+table 
+  background: #7a22b5
+  width: 100%
+  font-size: 14px
+  border-collapse: collapse
+  margin-bottom: 60px
+  @media screen and (max-width: 500px)
+    font-size: 12px
+
+table td, table th 
+  padding: 10px 20px
+  text-align: left
+  border: 0px solid white
+  border-right-width: 1px
+  border-bottom-width: 1px
+  margin: 0
+  @media screen and (max-width: 500px)
+    padding: 2px
+
