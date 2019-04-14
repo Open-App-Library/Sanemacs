@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.1 ;;;
+;;; Sanemacs version 0.2.2 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -35,11 +35,10 @@
 (show-paren-mode 1)                       ; Show closing parens by default
 (setq linum-format "%4d ")                ; Prettify line number format
 (let ((linum-command                      ; Show line numbers in programming modes
-       (if (version<= "26.0.50" emacs-version) ; Use display-line-numbers-mode for better performance on Emacs 26+
-           #'linum-mode
-         #'display-line-numbers-mode)))
+       (if (version<= "26.0.50" emacs-version)
+           #'display-line-numbers-mode
+         #'linum-mode)))
   (add-hook 'prog-mode-hook linum-command))
-(add-hook 'prog-mode-hook #'linum-mode)
 (use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
   :init (global-undo-tree-mode))
 
