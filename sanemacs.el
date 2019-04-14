@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.1 ;;;
+;;; Sanemacs version 0.2.3 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -34,12 +34,10 @@
 (fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
 (show-paren-mode 1)                       ; Show closing parens by default
 (setq linum-format "%4d ")                ; Prettify line number format
-(let ((linum-command                      ; Show line numbers in programming modes
-       (if (version<= "26.0.50" emacs-version) ; Use display-line-numbers-mode for better performance on Emacs 26+
-           #'linum-mode
-         #'display-line-numbers-mode)))
-  (add-hook 'prog-mode-hook linum-command))
-(add-hook 'prog-mode-hook #'linum-mode)
+(add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
+          (if (fboundp 'display-line-numbers-mode)
+              #'display-line-numbers-mode
+            #'linum-mode))
 (use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
   :init (global-undo-tree-mode))
 
