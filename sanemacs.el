@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.0 ;;;
+;;; Sanemacs version 0.2.1 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -14,7 +14,7 @@
 ;;; Setup package.el
 (require 'package)
 (setq package-enable-at-startup nil)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (unless package--initialized (package-initialize))
 
 ;;; Setup use-package
@@ -33,10 +33,15 @@
 (setq ring-bell-function 'ignore)         ; Disable bell sound
 (fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
 (show-paren-mode 1)                       ; Show closing parens by default
-(setq linum-format "%4d ")          ; Prettify line number format
-(add-hook 'prog-mode-hook #'linum-mode)   ; Show line numbers in programming modes
+(setq linum-format "%4d ")                ; Prettify line number format
+(let ((linum-command                      ; Show line numbers in programming modes
+       (if (version<= "26.0.50" emacs-version) ; Use display-line-numbers-mode for better performance on Emacs 26+
+           #'linum-mode
+         #'display-line-numbers-mode)))
+  (add-hook 'prog-mode-hook linum-command))
+(add-hook 'prog-mode-hook #'linum-mode)
 (use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
-  :init (global-undo-tree-mode)) 
+  :init (global-undo-tree-mode))
 
 ;;; Keybindings
 (global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop) ; Indent selection by one tab length
