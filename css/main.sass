@@ -143,7 +143,7 @@ hr
   margin: 15px 0
   color: #6a14b0
 
-table 
+table
   background: #7a22b5
   width: 100%
   font-size: 14px
@@ -152,7 +152,7 @@ table
   @media screen and (max-width: 500px)
     font-size: 12px
 
-table td, table th 
+table td, table th
   padding: 10px 20px
   text-align: left
   border: 0px solid white
@@ -162,3 +162,32 @@ table td, table th
   @media screen and (max-width: 500px)
     padding: 2px
 
+.github-button-container
+  width: 150px
+  position: absolute
+  right: 5px
+  top: 20px
+  @media screen and (max-width: 530px)
+    iframe
+      display: none
+    #view-on-github
+      text-align: right !important
+      margin-right: 10px
+      margin-top: -7px !important
+
+  iframe, #view-on-github
+    opacity: 0.7
+    transition: 150ms ease-in
+    &:hover
+      opacity: 1
+
+  #view-on-github
+    text-align: left
+    display: block
+    color: white
+    font-family: 'Roboto', sans
+    font-size: 14px
+    margin-top: 3px
+    text-decoration: none
+    &:hover
+      text-decoration: underline
