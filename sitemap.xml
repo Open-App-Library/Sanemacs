@@ -5,10 +5,10 @@ layout: null
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>http://localhost:4000/</loc>
+      <loc>https://sanemacs.com/</loc>
     </url>
 
     <url>
-      <loc>http://localhost:4000/sanemacs.html</loc>
+      <loc>https://sanemacs.com/sanemacs</loc>
     </url>
 </urlset>
