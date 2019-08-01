@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.3 ;;;
+;;; Sanemacs version 0.2.4 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -51,7 +51,8 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
-(load custom-file)
+;;; Load custom file. Don't hide errors. Hide success message
+(load custom-file nil t)
 
 ;;; Avoid littering the user's filesystem with backups
 (setq
