@@ -3,7 +3,7 @@
         "date": "2019-08-25",
         "title": "0.2.5 - Fixed terrible Emacs bug, added changelog, added RSS",
         "changes": [
-            "Emacs has been plagued with a pretty horrible bug recently, rendering it broken by default. ([As described here](https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/)). Now, Sanemacs users do not have to worry about this. 😃",
+            "Emacs has been plagued with a pretty horrible bug recently, rendering it broken by default. The \"Failed to download 'GNU' archive\" error. ([As described here](https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/)). Now, Sanemacs users do not have to worry about this. 😃",
             "Added a changelog to the website",
             "Added an RSS feed for the changelog. Subscribe to this to keep track of the latest updates! [Link to RSS feed](https://sanemacs.com/updates.xml)"
         ]
