@@ -24,7 +24,7 @@ layout: none
           {{ the_desc | xml_escape }}
         </description>
         <pubDate>{{ i.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
-        <link>https://sanemacs.com</link>
+        <link>https://sanemacs.com/sanemacs.el</link>
       </item>
     {% endfor %}
   </channel>
