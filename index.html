@@ -12,7 +12,31 @@ layout: default
   <h1>{{site.title}}</h1>
   <h2>{{site.subtitle}}</h2>
   <p>Sanemacs sets up a variety of tasteful defaults, MELPA, use-package, and undo-tree to provide for a great out-of-the-box Emacs experience.</p>
-  <!-- Github Button -->
+
+  <a id="subscribe-button" href="https://sanemacs.com/updates.xml" target="_blank">
+    {% include rss.svg %}
+    <span>Subscribe to Update Notifications via RSS</span>
+  </a>
+
+  <div id="changelog">
+    <div class="changelog-text">
+      <a class="changelog-link" href="#" onclick="toggleChangelog()">View Changelog</a>
+      <div class="changelog-box" id="changelog-box">
+        {% include changelog.html %}
+      </div>
+      <script type="application/javascript" defer>
+        var box = document.getElementById("changelog-box");
+
+        function toggleChangelog()
+        {
+            var status = box.style.display;
+            console.log("OLD: ", status);
+            box.style.display = status == "block" ? "none" : "block";
+            console.log("NEW: ", box.style.display);
+        }
+      </script>
+    </div>
+  </div>
 </div>
 
 <div class="page">

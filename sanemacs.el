@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.4 ;;;
+;;; Sanemacs version 0.2.5 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -10,6 +10,11 @@
     (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode)
     (scroll-bar-mode -1))
+
+;;; Fix this bug:
+;;; https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/
+(when (version< emacs-version "26.3")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;;; Setup package.el
 (require 'package)

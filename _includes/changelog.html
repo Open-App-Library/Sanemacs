@@ -1,0 +1,8 @@
+{% for i in site.data.changelog %}
+<p><b>{{i.title}} — {{i.date}}</b></p>
+<ul>
+  {% for j in i.changes %}
+  <li>{{j | markdownify}}</li>
+  {% endfor %}
+</ul>
+{% endfor %}

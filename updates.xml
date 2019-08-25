@@ -1,0 +1,31 @@
+---
+layout: none
+---
+
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sanemacs Updates</title>
+    <description>Update notifications for new Sanemacs releases</description>
+    <link>https://sanemacs.com</link>
+    <atom:link href="https://sanemacs.com/updates.xml" rel="self" type="application/rss+xml" />
+    {% for i in site.data.changelog %}
+      <item>
+        <title>{{i.title}}</title>
+        <description>
+          {% capture the_desc %}
+          <ul>
+          {% for j in i.changes %}
+          <li>{{j | markdownify}}</li>
+          {% endfor %}
+          </ul>
+          {% endcapture %}
+
+          {{ the_desc | xml_escape }}
+        </description>
+        <pubDate>{{ i.date | date: "%a, %d %b %Y %H:%M:%S %z" }}</pubDate>
+        <link>https://sanemacs.com</link>
+      </item>
+    {% endfor %}
+  </channel>
+</rss>
