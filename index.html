@@ -5,88 +5,97 @@ layout: default
 ---
 
 <div class="header">
-  <div class="github-button-container">
-    <iframe id="starbtn" src="https://ghbtns.com/github-btn.html?user=Open-App-Library&repo=Sanemacs&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
-    <a href="https://github.com/Open-App-Library/Sanemacs" id="view-on-github" href="">Source Code</a>
-  </div>
-  <h1>{{site.title}}</h1>
-  <h2>{{site.subtitle}}</h2>
-  <p>Sanemacs sets up a variety of tasteful defaults, MELPA, use-package, and undo-tree to provide for a great out-of-the-box Emacs experience.</p>
-
-  <a id="subscribe-button" href="https://sanemacs.com/updates.xml" target="_blank">
-    {% include rss.svg %}
-    <span>Subscribe to Update Notifications via RSS</span>
-  </a>
-
-  <div id="changelog">
-    <div class="changelog-text">
-      <a class="changelog-link" href="#" onclick="toggleChangelog()">View Changelog</a>
-      <div class="changelog-box" id="changelog-box">
-        {% include changelog.html %}
-      </div>
-      <script type="application/javascript" defer>
-        var box = document.getElementById("changelog-box");
-
-        function toggleChangelog()
-        {
-            var status = box.style.display;
-            console.log("OLD: ", status);
-            box.style.display = status == "block" ? "none" : "block";
-            console.log("NEW: ", box.style.display);
-        }
-      </script>
+    <div class="github-button-container">
+        <iframe id="starbtn" src="https://ghbtns.com/github-btn.html?user=Open-App-Library&repo=Sanemacs&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+        <a href="https://github.com/Open-App-Library/Sanemacs" id="view-on-github" href="">Source Code</a>
     </div>
-  </div>
+    <h1>{{site.title}}</h1>
+    <h2>{{site.subtitle}}</h2>
+    <p>Sanemacs sets up a variety of tasteful defaults, MELPA, use-package, and undo-tree to provide for a great out-of-the-box Emacs experience.</p>
+
+    <a id="subscribe-button" href="https://sanemacs.com/updates.xml" target="_blank">
+        {% include rss.svg %}
+        <span>Subscribe to Update Notifications via RSS</span>
+    </a>
+
+    <div id="changelog">
+        <div class="changelog-text">
+            <a class="changelog-link" href="#" onclick="toggleChangelog()">View Changelog</a>
+            <div class="changelog-box" id="changelog-box">
+                {% include changelog.html %}
+            </div>
+            <script type="application/javascript" defer>
+             var box = document.getElementById("changelog-box");
+
+             function toggleChangelog()
+             {
+                 var status = box.style.display;
+                 console.log("OLD: ", status);
+                 box.style.display = status == "block" ? "none" : "block";
+                 console.log("NEW: ", box.style.display);
+             }
+            </script>
+        </div>
+    </div>
+</div>
+
+<div class="page wide">
+    <h3>Installation</h3>
+    <div class="install-row">
+        <div class="install-col">
+            <h4>Step #1: Download sanemacs.el</h4>
+            <p>The first step is to download sanemacs.el and put it into your Emacs configuration directory.</p>
+            <pre id="maclinux" class="terminal"><code>mkdir -p ~/.emacs.d; curl <a target="_blank" href="/sanemacs.el">https://sanemacs.com/sanemacs.el</a> > ~/.emacs.d/sanemacs.el</code></pre>
+        </div>
+        <div class="install-col">
+            <h4>Step #2: Create or modify<br><code class="yellow">~/.emacs.d/init.el</code></h4>
+            <p>After you have downloaded sanemacs.el, all that's left to do is load it up in your config!</p>
+
+            <div class="example-usage">
+                <pre class="paper">{% highlight elisp %}{% include example-config.el %}{% endhighlight %}</pre>
+                <p><a target="_blank" href="https://github.com/dougbeney/emacs/">View an example Emacs configuration using sanemacs.el</a></p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="page">
-  <h3>Installation</h3>
-  <h4>Step #1: Download sanemacs.el</h4>
-  <pre id="maclinux" class="terminal"><code>mkdir -p ~/.emacs.d; curl <a target="_blank" href="/sanemacs.el">https://sanemacs.com/sanemacs.el</a> > ~/.emacs.d/sanemacs.el</code></pre>
-  <h4>Step #2: Create or modify <code class="yellow">~/.emacs.d/init.el</code></h4>
-  <p>After you have downloaded sanemacs.el, all that's left to do is load it up!</p>
+    <hr>
 
-  <div class="example-usage">
-    <pre class="paper">{% highlight elisp %}{% include example-config.el %}{% endhighlight %}</pre>
-    <p><a target="_blank" href="https://github.com/dougbeney/Emacs-Config/">View an example Emacs configuration using sanemacs.el</a></p>
-  </div>
+    <div class="keybindings">
+        <h2>Keybindings</h2>
+        <p>The general rule of keybindings added by Sanemacs is that they may not override default Emacs keybindings. There are four keybindings you should be aware of. Two of which are created by Sanemacs, the other two are from undo-tree. While undo-tree did "override" a default binding, it is appropriate since it is a drop-in replacement that really makes a big difference in the usability of Emacs.</p>
+        <table>
+            <tr>
+	        <th>Keybinding</th> <th>Description</th> <th>Emacs command run</th>
+            </tr>
+            <tr>
+	        <td>Control + ></td> <td>Indents a selection by one tab length</td> <td><code>indent-rigidly-right-to-tab-stop</code></td>
+            </tr>
+            <tr>
+	        <td>Control + <</td> <td>De-indents a selection by one tab length</td> <td><code>indent-rigidly-left-to-tab-stop</code></td>
+            </tr>
+            <tr>
+	        <td>Control + /</td> <td>Undo</td> <td><code>undo-tree-undo</code></td>
+            </tr>
+            <tr>
+	        <td>Control + ?</td> <td>Redo</td> <td><code>undo-tree-redo</code></td>
+            </tr>
+            <tr>
+            </tr>
+        </table>
+    </div>
 
-  <hr>
+    <hr>
 
-  <div class="keybindings">
-    <h2>Keybindings</h2>
-    <p>The general rule of keybindings added by Sanemacs is that they may not override default Emacs keybindings. There are four keybindings you should be aware of. Two of which are created by Sanemacs, the other two are from undo-tree. While undo-tree did "override" a default binding, it is appropriate since it is a drop-in replacement that really makes a big difference in the usability of Emacs.</p>
-    <table>
-      <tr>
-	<th>Keybinding</th> <th>Description</th> <th>Emacs command run</th>
-      </tr>
-      <tr>
-	<td>Control + ></td> <td>Indents a selection by one tab length</td> <td><code>indent-rigidly-right-to-tab-stop</code></td>
-      </tr>
-      <tr>
-	<td>Control + <</td> <td>De-indents a selection by one tab length</td> <td><code>indent-rigidly-left-to-tab-stop</code></td>
-      </tr>
-      <tr>
-	<td>Control + /</td> <td>Undo</td> <td><code>undo-tree-undo</code></td>
-      </tr>
-      <tr>
-	<td>Control + ?</td> <td>Redo</td> <td><code>undo-tree-redo</code></td>
-      </tr>
-      <tr>
-      </tr>
-    </table>
-  </div>
+    <div class="bonus-tip">
+        <h2>"Layers?" (Sane, minimal layers)</h2>
+        <p>If this package gets traction, a project I would like to create is <code>sanemacs-layers</code>. It would be similar how Spacemacs' layers concept but will have different goals.</p>
+        <p>First, <code>sanemacs-layers</code> would work on any Emacs configuration, sanemacs or not.</p>
+        <p>Next, it would have a focus on sane configurations that just work, but are flexible. This would entail automatic detection settings to work for your system - configuring your PythonPath automatically as an example.</p>
+    </div>
 
-  <hr>
-
-  <div class="bonus-tip">
-    <h2>"Layers?" (Sane, minimal layers)</h2>
-    <p>If this package gets traction, a project I would like to create is <code>sanemacs-layers</code>. It would be similar how Spacemacs' layers concept but will have different goals.</p>
-    <p>First, <code>sanemacs-layers</code> would work on any Emacs configuration, sanemacs or not.</p>
-    <p>Next, it would have a focus on sane configurations that just work, but are flexible. This would entail automatic detection settings to work for your system - configuring your PythonPath automatically as an example.</p>
-  </div>
-
-  <a target="_blank" class="view-sanemacs-link" href="/sanemacs">View sanemacs.el in browser (With code highlighting!)</a>
+    <a target="_blank" class="view-sanemacs-link" href="/sanemacs">View sanemacs.el in browser (With code highlighting!)</a>
 </div>
 
 <!-- For Github Button -->
