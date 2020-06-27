@@ -17,9 +17,6 @@ body
 h1,h2,h3,h4,h5,h6
   text-align: center
 
-h1 span.normal
-  font-family: 'Roboto', sans-serif
-
 .header
   text-align: center
   box-sizing: border-box
@@ -256,7 +253,11 @@ table td, table th
 
 .install-row
   display: flex
-  flex-direction: col
+  flex-direction: row
+  @media screen and (max-width: 818px)
+    flex-direction: column
+    .install-col
+      max-width: 100%
 
 
 .install-col
@@ -270,10 +271,3 @@ table td, table th
   color: #f2c3ff
   margin-top: 0
   line-height: 1.5
-
-#installation
-  text-transform: uppercase
-  font-weight: 100
-  letter-spacing: 4px
-  font-size: 2em
-  color: #a58fa8
