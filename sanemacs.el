@@ -1,7 +1,16 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.2.5 ;;;
+;;; Sanemacs version 0.3.0 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; For performance
+(setq gc-cons-threshold 100000000)
+(setq read-process-output-max (* 1024 1024)) ;; 1mb
+
+
+(add-hook 'after-init-hook #'(lambda ()
+                               ;; restore after startup
+                               (setq gc-cons-threshold 800000)))
 
 ;;; Disable menu-bar, tool-bar, and scroll-bar.
 (if (fboundp 'menu-bar-mode)
@@ -38,17 +47,29 @@
 (setq ring-bell-function 'ignore)         ; Disable bell sound
 (fset 'yes-or-no-p 'y-or-n-p)             ; y-or-n-p makes answering questions faster
 (show-paren-mode 1)                       ; Show closing parens by default
-(setq linum-format "%4d ")                ; Prettify line number format
+(setq linum-format "%4d ")                ; Line number format
+(delete-selection-mode 1)                 ; Selected text will be overwritten when you start typing
+(setq byte-compile-warnings nil)
+(use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
+  :init (global-undo-tree-mode))
+(add-hook 'before-save-hook
+	  'delete-trailing-whitespace)    ; Delete trailing whitespace on save
 (add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
           (if (fboundp 'display-line-numbers-mode)
               #'display-line-numbers-mode
             #'linum-mode))
-(use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
-  :init (global-undo-tree-mode))
+
+(defun sanemacs/backward-kill-word ()
+  (interactive "*")
+  (push-mark)
+  (backward-word)
+  (delete-region (point) (mark)))
 
 ;;; Keybindings
+(global-set-key [mouse-3] 'mouse-popup-menubar-stuff)          ; Gives right-click a context menu
 (global-set-key (kbd "C->") 'indent-rigidly-right-to-tab-stop) ; Indent selection by one tab length
 (global-set-key (kbd "C-<") 'indent-rigidly-left-to-tab-stop)  ; De-indent selection by one tab length
+(global-set-key (kbd "M-DEL") 'sanemacs/backward-kill-word)    ; Kill word without copying it to your clipboard
 
 ;;; Offload the custom-set-variables to a separate file
 ;;; This keeps your init.el neater and you have the option
@@ -59,15 +80,17 @@
 ;;; Load custom file. Don't hide errors. Hide success message
 (load custom-file nil t)
 
-;;; Avoid littering the user's filesystem with backups
+;;; Put Emacs auto-save and backup files to /tmp/ or C:/Temp/
+(defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
 (setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-    '((".*" . "~/.emacs.d/saves/"))    ; don't litter my fs tree
+   backup-by-copying t                                        ; Avoid symlinks
    delete-old-versions t
    kept-new-versions 6
    kept-old-versions 2
-   version-control t)       ; use versioned backups
+   version-control t
+   auto-save-list-file-prefix emacs-tmp-dir
+   auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t))  ; Change autosave dir to tmp
+   backup-directory-alist `((".*" . ,emacs-tmp-dir)))
 
 ;;; Lockfiles unfortunately cause more pain than benefit
 (setq create-lockfiles nil)
@@ -76,3 +99,7 @@
 
 (if (not custom-enabled-themes)
     (load-theme 'wheatgrass t))
+
+(defun reload-config ()
+  (interactive)
+  (load-file (concat user-emacs-directory "init.el")))

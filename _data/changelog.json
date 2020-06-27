@@ -1,5 +1,17 @@
 [
     {
+        "date": "2020-06-27",
+        "title": "0.3.0 - More sane tweaks!",
+        "changes": [
+            "gc-cons-threadhold for performance",
+            "sane backward kill word behavior",
+            "backward kill without copy to clipboard",
+            "right-click context menu",
+            "reload-config interactive function",
+            "Cleaned up the file backups behaviorc",
+        ]
+    },
+    {
         "date": "2019-08-25",
         "title": "0.2.5 - Fixed terrible Emacs bug, added changelog, added RSS",
         "changes": [
