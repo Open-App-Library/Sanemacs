@@ -3,6 +3,7 @@ layout: none
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="/css/rss.css" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sanemacs Updates</title>
