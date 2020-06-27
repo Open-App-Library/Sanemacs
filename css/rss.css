@@ -28,6 +28,6 @@ docs {
     border: 1px solid silver;
 }
 /* all hidden elements */
-language, lastBuildDate, ttl, guid, category, description, pubDate {
+language, lastBuildDate, ttl, guid, category, description, pubDate, link {
     display: none;
 }
