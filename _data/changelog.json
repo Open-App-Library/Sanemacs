@@ -9,6 +9,8 @@
             "right-click context menu",
             "reload-config interactive function",
             "Cleaned up the file backups behaviorc",
+            "Auto revert mode on by default",
+            "line numbers now show up in the terminal in programming modes"
         ]
     },
     {

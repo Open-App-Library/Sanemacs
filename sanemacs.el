@@ -49,12 +49,13 @@
 (show-paren-mode 1)                       ; Show closing parens by default
 (setq linum-format "%4d ")                ; Line number format
 (delete-selection-mode 1)                 ; Selected text will be overwritten when you start typing
+(global-auto-revert-mode t)               ; Auto-update buffer if file has changed on disk
 (use-package undo-tree                    ; Enable undo-tree, sane undo/redo behavior
   :init (global-undo-tree-mode))
 (add-hook 'before-save-hook
 	  'delete-trailing-whitespace)    ; Delete trailing whitespace on save
 (add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
-          (if (fboundp 'display-line-numbers-mode)
+          (if (and (fboundp 'display-line-numbers-mode) (display-graphic-p))
               #'display-line-numbers-mode
             #'linum-mode))
 
