@@ -1,5 +1,12 @@
 [
     {
+        "date": "2022-04-04",
+        "title": "0.3.1 - Sane undo tree",
+        "changes": [
+            "Made undo tree not create files in your working directory by default",
+        ]
+    },
+    {
         "date": "2020-06-27",
         "title": "0.3.0 - More sane tweaks!",
         "changes": [
