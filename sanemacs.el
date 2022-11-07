@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.3.1 ;;;
+;;; Sanemacs version 0.3.2 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -76,7 +76,7 @@
 ;;; Offload the custom-set-variables to a separate file
 ;;; This keeps your init.el neater and you have the option
 ;;; to gitignore your custom.el if you see fit.
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (unless (file-exists-p custom-file)
   (write-region "" nil custom-file))
 ;;; Load custom file. Don't hide errors. Hide success message
@@ -104,4 +104,4 @@
 
 (defun reload-config ()
   (interactive)
-  (load-file (concat user-emacs-directory "init.el")))
+  (load-file (expand-file-name "init.el" user-emacs-directory)))

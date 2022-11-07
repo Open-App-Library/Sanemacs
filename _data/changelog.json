@@ -1,5 +1,12 @@
 [
     {
+        "date": "2022-11-07",
+        "title": "0.3.2 - Not hardcoding Emacs config directory",
+        "changes": [
+            "Not hardcoding the Emacs config directory. <a href='https://github.com/Open-App-Library/Sanemacs/issues/4'>Github issue</a>",
+        ]
+    },
+    {
         "date": "2022-04-04",
         "title": "0.3.1 - Sane undo tree",
         "changes": [
