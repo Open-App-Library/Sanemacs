@@ -1,5 +1,5 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Sanemacs version 0.3.2 ;;;
+;;; Sanemacs version 0.3.3 ;;;
 ;;; https://sanemacs.com   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -55,10 +55,20 @@
   :config (setq-default undo-tree-auto-save-history nil))
 (add-hook 'before-save-hook
 	  'delete-trailing-whitespace)    ; Delete trailing whitespace on save
-(add-hook 'prog-mode-hook                 ; Show line numbers in programming modes
-          (if (and (fboundp 'display-line-numbers-mode) (display-graphic-p))
-              #'display-line-numbers-mode
-            #'linum-mode))
+
+;; Show line numbers in programming modes
+(add-hook 'prog-mode-hook
+          (if (or
+			   ; If linum-mode doesn't exist...
+			   (not (fboundp 'linum-mode))
+			   ; ...or Emacs has display-line-numbers-mode capability
+			   (and (fboundp 'display-line-numbers-mode) (display-graphic-p)))
+			  ; ...then use display-line-numbers-mode!
+              'display-line-numbers-mode
+			; Otherwise, use linum-mode
+            'linum-mode))
+
+(global-display-line-numbers-mode)
 
 (defun sanemacs/backward-kill-word ()
   (interactive "*")
