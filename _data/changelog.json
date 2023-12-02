@@ -1,39 +1,46 @@
 [
-    {
-        "date": "2022-11-07",
-        "title": "0.3.2 - Not hardcoding Emacs config directory",
-        "changes": [
-            "Not hardcoding the Emacs config directory. <a href='https://github.com/Open-App-Library/Sanemacs/issues/4'>Github issue</a>",
-        ]
-    },
-    {
-        "date": "2022-04-04",
-        "title": "0.3.1 - Sane undo tree",
-        "changes": [
-            "Made undo tree not create files in your working directory by default",
-        ]
-    },
-    {
-        "date": "2020-06-27",
-        "title": "0.3.0 - More sane tweaks!",
-        "changes": [
-            "gc-cons-threadhold for performance",
-            "sane backward kill word behavior",
-            "backward kill without copy to clipboard",
-            "right-click context menu",
-            "reload-config interactive function",
-            "Cleaned up the file backups behaviorc",
-            "Auto revert mode on by default",
-            "line numbers now show up in the terminal in programming modes"
-        ]
-    },
-    {
-        "date": "2019-08-25",
-        "title": "0.2.5 - Fixed terrible Emacs bug, added changelog, added RSS",
-        "changes": [
-            "Emacs has been plagued with a pretty horrible bug recently, rendering it broken by default. The \"Failed to download 'GNU' archive\" error. ([As described here](https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/)). Now, Sanemacs users do not have to worry about this. 😃",
-            "Added a changelog to the website",
-            "Added an RSS feed for the changelog. Subscribe to this to keep track of the latest updates! [Link to RSS feed](https://sanemacs.com/updates.xml)"
-        ]
-    }
+	{
+		"date": "2023-12-02",
+		"title": "0.3.3 - Adapting to the removal of \"linum-mode\"",
+		"changes": [
+			"linum-mode was removed from Emacs 27. This update prevents sanemacs from calling linum-mode if it does not exist. This fixes the issue of Emacs hanging when started as a daemon on newer versions of Emacs."
+		]
+	}
+	{
+		"date": "2022-11-07",
+		"title": "0.3.2 - Not hardcoding Emacs config directory",
+		"changes": [
+			"Not hardcoding the Emacs config directory. <a href='https://github.com/Open-App-Library/Sanemacs/issues/4'>Github issue</a>",
+		]
+	},
+	{
+		"date": "2022-04-04",
+		"title": "0.3.1 - Sane undo tree",
+		"changes": [
+			"Made undo tree not create files in your working directory by default",
+		]
+	},
+	{
+		"date": "2020-06-27",
+		"title": "0.3.0 - More sane tweaks!",
+		"changes": [
+			"gc-cons-threadhold for performance",
+			"sane backward kill word behavior",
+			"backward kill without copy to clipboard",
+			"right-click context menu",
+			"reload-config interactive function",
+			"Cleaned up the file backups behaviorc",
+			"Auto revert mode on by default",
+			"line numbers now show up in the terminal in programming modes"
+		]
+	},
+	{
+		"date": "2019-08-25",
+		"title": "0.2.5 - Fixed terrible Emacs bug, added changelog, added RSS",
+		"changes": [
+			"Emacs has been plagued with a pretty horrible bug recently, rendering it broken by default. The \"Failed to download 'GNU' archive\" error. ([As described here](https://www.reddit.com/r/emacs/comments/cueoug/the_failed_to_download_gnu_archive_is_a_pretty/)). Now, Sanemacs users do not have to worry about this. 😃",
+			"Added a changelog to the website",
+			"Added an RSS feed for the changelog. Subscribe to this to keep track of the latest updates! [Link to RSS feed](https://sanemacs.com/updates.xml)"
+		]
+	}
 ]
