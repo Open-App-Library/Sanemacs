@@ -5,7 +5,7 @@
 		"changes": [
 			"linum-mode was removed from Emacs 27. This update prevents sanemacs from calling linum-mode if it does not exist. This fixes the issue of Emacs hanging when started as a daemon on newer versions of Emacs."
 		]
-	}
+	},
 	{
 		"date": "2022-11-07",
 		"title": "0.3.2 - Not hardcoding Emacs config directory",
